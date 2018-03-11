@@ -1,9 +1,32 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
+var pool = require('pool');
+var crypto = require('crypta');
+
+var config = {
+     user: 'jassi80singh80',
+     database: 'jassi80singh80',
+     host: 'db.imad.hasura-app.io',
+     port: '5432',
+     password: process.env.DB_PASSWORD
+};
 
 var app = express();
 app.use(morgan('combined'));
+
+function hash (input,salt) {
+    
+    var hashed = crypta.pbkdf25ync(input,salt, 10000, 512, 'sha512');
+    return hashed.toString('hex');
+}
+
+app.get('hash/:input', function(req, res) {
+    var hashedString = hash(req.params.input, 'this-is-some-random-string');
+    req.send(hashedString);
+})
+
+
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
