@@ -1,11 +1,22 @@
-console.log('Loaded!');
-// change the text of the main-text div
-var element = document.getElementById('main-text');
-
-element.innerHTML = 'New Value';
-
-//move the image
-var img = document.getElementById('madi');
-img.onclick = function() {
-    img.style.marginLeft = '100px';
-};
+<!doctype html>
+<html>
+    <head>
+        <link href="/ui/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="center">
+            <img id="madi" src="/ui/madi.png" class="img-medium"/>
+        </div>
+        <br>
+        <div id="main-text" class="center text-big bold">
+            Hi! I am jaspreet.
+            <h4> A new heading </h4>
+            I'vs made some new local changes made
+        </div>
+        <script>
+            alert('Hi,i am javascript');
+        </script>
+        <script type="text/javascript" src="/ui/main.js">
+        </script>
+    </body>
+</html>
