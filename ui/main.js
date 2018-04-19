@@ -18,6 +18,6 @@ button.onclick = function() {
     
     //render the variable in the current span
     counter = counter + 1;
-    var span = document.getElementById('count');
-    span.innerHTML = counter.toString();
+    var hel = document.getElementById('count');
+    hel.innerHTML = counter.toString();
 };
