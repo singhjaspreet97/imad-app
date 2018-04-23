@@ -13,44 +13,6 @@ var config = {
  
 var app = express();
 app.use(morgan('combined')); 
-
-
-var articles= {
-     'article-one': {
-        title: 'Article One I am Jaspreet Singh',
-        heading: 'Article One',
-        date: 'April 11, 2018',
-        content:  `
-                <p>
-                  This is content for my first article. This is content for my first article. This is content for my first article. This is content for my first article. This is content for my first article. This is content for my first article. This is content for my first article.
-                </p>
-                <p>
-                   This is content for my first article. This is content for my first article. This is content for my first article. This is content for my first article. This is content for my first article. This is content for my first article. This is content for my first article.
-                 </p>
-                  <p>
-                    This is content for my first article. This is content for my first article. This is content for my first article. This is content for my first article. This is content for my first article. This is content for my first article. This is content for my first article.
-                  </p>`
-    },
-     'article-two': {
-        title: 'Article Two I am Jaspreet Singh',
-        heading: 'Article Two',
-        date: 'April 11, 2018',
-        content:  `
-                <p>
-                  This is content for my second article.
-                </p>`
-         
-     },
-     'article-three': {
-             title: 'Article Three I am Jaspreet Singh',
-        heading: 'Article Three',
-        date: 'April 11, 2018',
-        content:  `
-                <p>
-                  This is content for my third article.
-                </p>`
-     }
-};
     
 function createTemplate (data) {
     var title = data.title;
@@ -125,7 +87,7 @@ app.get('/articles/:articleName', function (req, res) {
     //articleName == article-one
     //articles[articleName] == {} content onject for article one
     
-    pool.query("SELECT * FROM article WHERE title = $1" ,[req.params.articleName], function (err, result) {
+    pool.query("SELECT * FROM article WHERE title = $1" ,[req.params.articleName], function (err, result) {   //important
          if(err) {
            res.status(500).send(err.toString());
        } else {
