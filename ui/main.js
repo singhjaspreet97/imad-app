@@ -27,7 +27,6 @@
  
 var submit = document.getElementById('submit_btn'); 
 submit.onclick = function() {
-    // make a request to the server and send the name
     
      // create a request object
     var request = new XMLHttpRequest();  
@@ -39,7 +38,6 @@ submit.onclick = function() {
            //Take some action
             if(request.status === 200)
             {
-                console.log('user logged in');
                 alert('Logged in successfully');
             } 
             else if(request.status === 403)
@@ -52,16 +50,14 @@ submit.onclick = function() {
             }
         }
     // Not done yet
-   };
+    };
   // Make a request
   var username = document.getElementById('username').value;
   var password = document.getElementById('password').value;
   console.log(username);
   console.log(password);
-  var name = nameInput.value;
   request.open('POST', 'http://jassi80singh80.imad.hasura-app.io/login', true);
   request.setRequestHeader('Content-Type', 'application/json'); 
   request.send(JSON.stringify({username: username, password: password})); 
     // Capture a list of names and render it as a result
-   
 };
